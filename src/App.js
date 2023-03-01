@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Home from './component/home/home';
+import Navbar from "./component/navbar/navbar"
+import Login from "./component/home/login"
+
 
 
 
@@ -8,7 +10,9 @@ function App() {
   return (
 
     <>
-      <Home/>
+      <Navbar/>
+      <Login/>
+
     </>
 
   );
