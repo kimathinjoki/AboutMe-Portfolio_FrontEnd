@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineLogin } from "react-icons/ai";
+import { AiOutlineLogin, AiOutlineUserAdd} from "react-icons/ai";
 import {RiLoginCircleFill} from "react-icons/ri";
 import {BiLogOutCircle} from "react-icons/bi"
 
@@ -18,7 +18,8 @@ function Navbar(){
             <div id="indicator"></div>     
         </nav>
         <div>
-            <p className="login"><span id="loginIcon"><AiOutlineLogin/></span></p>
+            {/* <p className="login"><span id="loginIcon"><AiOutlineLogin/></span></p> */}
+            <p className="login"><span id="loginIcon"><AiOutlineUserAdd/></span></p>
             
         </div>
 

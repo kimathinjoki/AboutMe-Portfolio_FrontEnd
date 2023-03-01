@@ -8,46 +8,51 @@ function portfolioForm(){
                 
             <div className="login-wrap">
 	            <div className="login-html">
-		            <input id="tab-1" type="radio" name="tab" className="sign-in" checked/><label for="tab-1" className="tab">Sign In</label>
-		            <input id="tab-2" type="radio" name="tab" className="sign-up" /><label for="tab-2" className="tab">Sign Up</label>
+		            <input id="tab-1" type="radio" name="tab" className="sign-in" checked/><label for="tab-1" className="tab">Bio</label>
+		            <input id="tab-2" type="radio" name="tab" className="sign-up" /><label for="tab-2" className="tab">Qualifications</label>
 		<div className="login-form">
 			<div className="sign-in-htm">
 				<div className="group">
-					<label for="user" className="label">Address</label>
+					<label for="user" className="label">Contact</label>
 					<input id="user" type="text" className="input"/>
 				</div>
 				<div className="group">
-					<label for="pass" clasNames="label">Contact</label>
+					<label for="pass" clasNames="label">Address</label>
+					<input id="pass" type="password" className="input" data-type="password"/>
+				</div>
+                <div className="group">
+					<label for="pass" clasNames="label">Country</label>
 					<input id="pass" type="password" className="input" data-type="password"/>
 				</div>
 				<div className="group">
 					<input id="check" type="checkbox" className="check" checked />
-					<label for="check"><span className="icon"></span> Keep me Signed in</label>
+					<label for="check"><span className="icon"></span> display bio info</label>
 				</div>
 				<div className="group">
 					<input type="submit" className="button" value="Sign In"/>
 				</div>
 				<div className="hr"></div>
 				<div className="foot-lnk">
-					<a href="#forgot">Forgot Password?</a>
+					<a href="#forgot">Half way there!</a>
 				</div>
 			</div>
 			<div className="sign-up-htm">
 				<div className="group">
-					<label for="user" className="label">Username</label>
+					<label for="user" className="label">Highest Education</label>
 					<input id="user" type="text" className="input"/>
 				</div>
 				<div className="group">
-					<label for="pass" className="label">Password</label>
+					<label for="pass" className="label">Professional Title</label>
 					<input id="pass" type="password" className="input" data-type="password"/>
 				</div>
 				<div className="group">
-					<label for="pass" className="label">Repeat Password</label>
+					<label for="pass" className="label">Experience</label></label>
 					<input id="pass" type="password" className="input" data-type="password"/>
 				</div>
 				<div className="group">
-					<label for="pass" className="label">Email Address</label>
+					<label for="pass" className="label">skills</label>
 					<input id="pass" type="text" className="input"/>
+                    <h2></h2>
 				</div>
 				<div className="group">
 					<input type="submit" className="button" value="Sign Up"/>
