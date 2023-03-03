@@ -1,0 +1,82 @@
+.registration{
+    display: flex;
+}
+.r-left{
+    display: flex;
+    position: relative;
+    flex: 1;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+
+.r-right{
+    display: flex;
+    position: relative;
+    margin-left: -2em;
+}
+
+.r-container{
+    background-color: var(--SixthColor);
+    height: 670px;
+    width: 20%;
+    
+}
+
+.flex-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px;
+}
+
+.r-title{
+    color: var(--BodyColor);
+    font-size: 40px;
+    margin-top: 2rem;
+    font-family: 'Mynerve', cursive;
+}
+
+.project-title{
+    font-size: 30px;
+    margin-bottom: 0.5em;
+    margin-top: -1em;
+    color: var(--BodyColor);
+    font-family: 'Mynerve', cursive;
+}
+
+.skills-title{
+    font-size: 30px;
+    margin-bottom: 0.5em;
+    margin-top:-1em;
+    color: var(--BodyColor);
+    font-family: 'Mynerve', cursive;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+
+.projects-card{
+    background-color: var(--FirstColor);
+    width: 20rem;
+    margin-top: 3em;
+    margin-left: 10em;
+    padding: 3em;
+    height: 230px;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.projects-card:hover{
+    transform: scale(1.0);
+    transition: transform 0.2s ease-out;
+}
