@@ -1,6 +1,8 @@
 import React from "react";
+import {GrAddCircle} from "react-icons/gr"
+import  {HiChevronDoubleRight, HiChevronDoubleLeft} from "react-icons/hi"
 
-function portfolioForm(){
+function PortfolioForm(){
     return(
         <div>
             <h1>Portfolio Form</h1>
@@ -18,23 +20,25 @@ function portfolioForm(){
 				</div>
 				<div className="group">
 					<label for="pass" clasNames="label">Address</label>
-					<input id="pass" type="password" className="input" data-type="password"/>
+					<input id="pass" type="text" className="input" />
 				</div>
                 <div className="group">
 					<label for="pass" clasNames="label">Country</label>
-					<input id="pass" type="password" className="input" data-type="password"/>
+					<input id="pass" type="text" className="input" />
 				</div>
+				
 				<div className="group">
+                    <label for="pass" clasNames="label">Company/organization</label>
+					<input id="pass" type="text" className="input" />
+				</div>
+                <div className="group">
 					<input id="check" type="checkbox" className="check" checked />
 					<label for="check"><span className="icon"></span> display bio info</label>
 				</div>
-				<div className="group">
-					<input type="submit" className="button" value="Sign In"/>
-				</div>
 				<div className="hr"></div>
-				<div className="foot-lnk">
-					<a href="#forgot">Half way there!</a>
-				</div>
+				{/* <div className="foot-lnk">
+                    <input id="tab-2" type="radio" name="tab" className="sign-up" /><label for="tab-2" className="tab"><HiChevronDoubleRight/></label>
+				</div> */}
 			</div>
 			<div className="sign-up-htm">
 				<div className="group">
@@ -43,24 +47,24 @@ function portfolioForm(){
 				</div>
 				<div className="group">
 					<label for="pass" className="label">Professional Title</label>
-					<input id="pass" type="password" className="input" data-type="password"/>
+					<input id="pass" type="text" className="input" />
 				</div>
 				<div className="group">
-					<label for="pass" className="label">Experience</label></label>
-					<input id="pass" type="password" className="input" data-type="password"/>
+					<label for="pass" className="label">Experience</label>
+					<input id="pass" type="text" className="input" />
 				</div>
 				<div className="group">
 					<label for="pass" className="label">skills</label>
 					<input id="pass" type="text" className="input"/>
-                    <h2></h2>
 				</div>
 				<div className="group">
-					<input type="submit" className="button" value="Sign Up"/>
+					<input type="submit" className="button" value="ADD+"/>
 				</div>
 				<div className="hr"></div>
-				<div className="foot-lnk">
-					<label for="tab-1">Already Member?</label>
-				</div>
+				{/* <div className="foot-lnk">
+					<label for="tab-1"></label>
+                    <input id="tab-1" type="radio" name="tab" className="sign-in" checked/><label for="tab-1" className="tab"><HiChevronDoubleLeft/></label>
+				</div> */}
 			</div>
 		        </div>
 	        </div>
@@ -71,4 +75,4 @@ function portfolioForm(){
     )
 }
 
-export default portfolioForm;
+export default PortfolioForm;
