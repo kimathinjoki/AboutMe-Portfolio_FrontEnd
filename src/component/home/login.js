@@ -1,57 +1,125 @@
-import React from "react";
+import React , {useState} from "react";
+import './login'
+import './loginStyling'
 
 function Login(){
 
+	// state to change diplay of landingpage
+	const [show,setShow] = useState('Show')
+
+	// states to change
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+ 
+
+    function showing(){
+        setShow("noShow")
+    }
 
 
 
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+    let token = {
+        "name": username,
+        "email": email,
+        "password_hash": password
+    }
 
-// signUpButton.addEventListener('click', () => {
-//  container.classList.add("right-panel-active");
-// });
-
-// signInButton.addEventListener('click', () => {
-// container.classList.remove("right-panel-active");
-// });
+    let loginToken = {
+        "email": email,
+        "password_hash": password
+    }
 
     
 
+    const handleSubmit = () => {
+    
+        fetch('http://127.0.0.1:9292/auth/register',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(token)
+        })
+        
+    }
+
+    function handleLogIn(){
+
+        fetch('http://127.0.0.1:9292/auth/login',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginToken)
+        })
+        .then(res => res.json())
+        .then((data)=>{
+        console.log(data)
+        })
+        }
+
+
+
     return(
-        <div>
+        <div className={show}>
        
         <div className="loginRegister container" id="container">
             
         <div className="form-container sign-up-container">
-		    <form className="loginForm" action="#">
+		    <form className="loginForm" action="#" onSubmit={(e)=> e.preventDefault()}>
 			    <h1 className="headerh1">Create Account</h1>
 			    <div className="social-container">
-				    <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-				    <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-				    <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+
 			    </div>
 			    <span className="formSpan">or use your email for registration</span>
-			    <input className="loginInput" type="text" placeholder="Name" />
-			    <input className="loginInput" type="email" placeholder="Email" />
-			    <input className="loginInput" type="password" placeholder="Password" />
-			    <button className="formButton">Sign Up</button>
+			    <input className="loginInput" type="text" value={username}
+                            onChange={(e) =>{
+                                e.preventDefault()
+                                setUsername(e.target.value)
+                            }} placeholder="Name" />
+			    <input className="loginInput" type="email" value={email} 
+                            onChange={(e) => {
+                                e.preventDefault()
+                                setEmail(e.target.value)
+                            }} placeholder="Email" />
+			    <input className="loginInput" type="password" value={password} 
+                            onChange={(e)=>{
+                                e.preventDefault()
+                                setPassword(e.target.value)
+                            }} placeholder="Password" />
+			    <button onClick={(e)=>{
+                            e.preventDefault()
+                            showing()
+                            handleLogIn()}} className="formButton">Sign Up</button>
 		    </form>
 	    </div>
 	    <div className="form-container sign-in-container">
-		    <form className="loginForm" action="#">
+		    <form className="loginForm" action="#" onSubmit={(e)=> e.preventDefault()}>
 			    <h1 className="headerh1">Sign in</h1>
 			    <div className="social-container">
-				    <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
+				    {/* <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
 				    <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-				    <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+				    <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a> */}
 			    </div>
 			    <span className="formSpan">or use your account</span>
-			    <input className="loginInput" type="email" placeholder="Email" />
-			    <input className="loginInput" type="password" placeholder="Password" />
+			    <input className="loginInput" type="email" value={email} 
+                            onChange={(e) => {
+                                e.preventDefault()
+                                setEmail(e.target.value)
+                            }}
+				 placeholder="Email" />
+			    <input className="loginInput" type="password" value={password} 
+                            onChange={(e)=>{
+                                e.preventDefault()
+                                setPassword(e.target.value)
+                            }}
+				 placeholder="Password" />
 			    <a id="formA" href="#">Forgot your password?</a>
-			    <button className="formButton">Sign In</button>
+			    <button className="formButton"  onClick={(e)=>{
+                            e.preventDefault()
+                            showing()
+                            handleLogIn()}}>Sign In</button>
 		    </form>
 	    </div>
 	    <div className="overlay-container">
