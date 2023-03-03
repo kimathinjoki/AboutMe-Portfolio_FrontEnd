@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from "./component/navbar/navbar"
-import Login from "./component/home/login"
-
+import LandingPage from './component/landingPage/landingPage';
+import Home from './component/home/home';
 
 
 
@@ -10,8 +9,9 @@ function App() {
   return (
 
     <>
-      <Navbar/>
-      <Login/>
+    
+   <LandingPage/>
+   <Home/>
 
     </>
 
