@@ -1,6 +1,7 @@
-import React from "react";
+Limport React from "react";
+import { Link } from'react-router-dom'
+import './navbar'
 import { AiOutlineLogin, AiOutlineUserAdd} from "react-icons/ai";
-import {RiLoginCircleFill} from "react-icons/ri";
 import {BiLogOutCircle} from "react-icons/bi"
 
 function Navbar(){
@@ -11,18 +12,12 @@ function Navbar(){
         </div>
         <nav id="navbar" >
             
-            <a href="#">HOME</a>
-            <a href="#">PORTFOLIOS</a>
-            <a href="#">ABOUT</a>
-            <a href="#">ADD+</a>
+            <a href="#"><Link className='navbar' to="/">HOME</Link></a>
+            <a href="#"><Link className='navbar' to="/projects">PROJECTS</Link></a>
+            <a href="#"><Link className='navbar' to="/add">ADD+</Link></a>
+            <a href="#"><Link className='navbar' to="/add"><AiOutlineUserAdd/></Link></a>
             <div id="indicator"></div>     
         </nav>
-        <div>
-            {/* <p className="login"><span id="loginIcon"><AiOutlineLogin/></span></p> */}
-            <p className="login"><span id="loginIcon"><AiOutlineUserAdd/></span></p>
-            
-        </div>
-
         <div>
             <p className="login"><span id="logoutIcon"><BiLogOutCircle/></span></p>
         </div>
