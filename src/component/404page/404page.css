@@ -1,0 +1,12 @@
+.error-page {
+	font-family: 'Montserrat';
+	text-align: center;
+	padding: 10rem;
+}
+
+.error-page a{
+	text-decoration: underline;
+}
+.error-page a:hover{
+	color: brown;
+}
