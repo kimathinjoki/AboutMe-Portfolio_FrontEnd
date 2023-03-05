@@ -133,3 +133,11 @@ textarea {
 	transform: scale(1.01);
 	transition: transform 0.2s ease-out;
 }
+
+.noShowHome{
+	display: none;
+}
+
+.homeShow{
+	display: block;
+}

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 // import { AiOutlineLogin, AiOutlineUserAdd} from "react-icons/ai";
-import { BiLogOutCircle } from 'react-icons/bi';
+// import { BiLogOutCircle } from 'react-icons/bi';
 import Form from '../form/Form';
 
 function Navbar() {

@@ -6,19 +6,86 @@ import Navbar from '../navbar/Navbar';
 import Login from '../login/Login';
 import './home.css';
 import Form from '../form/Form';
+import {BiLogOutCircle} from "react-icons/bi"
 
 
 
 function Home() {
 
 	const [projects, setProjects] = useState([]);
+
+	
 	const [show, setShow] = useState('Show');
 	const [homeShow, setHomeShow] = useState("noShowHome")
 
 
+	// states to change
+	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	// sets the id 
+	const [logedUserId, setLogedUserId] =useState(0)
+
+	// sets if the login is succesfull or not
+
+	const [allow, setAllow] = useState("")
+	const [failedLogInMsg, setFailedLogInMsg] =  useState("noMsg")
+	
+	
+		let token = {
+			name: username,
+			email: email,
+			password_hash: password,
+		};
+	
+		let loginToken = {
+			email: email,
+			password_hash: password,
+		};
+	
+		const handleSignUp = () => {
+			fetch('http://127.0.0.1:9292/signup', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(token),
+			})
+			.then(res => res.json())
+			.then((data) => {
+                console.log(data);
+				setAllow(data.message)
+				setLogedUserId(data.id)
+            });
+		};
+	
+		function handleLogIn() {
+			fetch('http://127.0.0.1:9292/signin', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(loginToken),
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					setAllow(data.message)
+					setLogedUserId(data.id)
+				});
+		}
+
+
 	function showing() {
-		setShow('noShow');
-		setHomeShow('homeShow')
+		if (allow === "SUCCESS"){
+			setShow('noShow');
+			setHomeShow('homeShow')
+		}else{
+			setShow('Show');
+            setHomeShow('noShowHome')
+			setFailedLogInMsg("msg")
+		}
 	}
 
 
@@ -41,10 +108,11 @@ function Home() {
 
 	return (
 		<div>
-			<Login show={show} showing={showing}/>
+			<Login show={show} showing={showing} handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} failedLogInMsg={failedLogInMsg}/>
 			<div className={homeShow}>
 			<div className="home">
 			<div className="home-container">
+				<div><BiLogOutCircle/></div>
 				<Navbar />
 				<div className="content-container">
 					<div className="cont content-container-left">

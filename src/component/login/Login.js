@@ -2,50 +2,11 @@ import React, { useState } from 'react';
 import './Login';
 import './login.css';
 
-function Login({show, showing}) {
-	// state to change diplay of landingpage
-	
+function Login({show, showing, handleLogIn, handleSignUp, password, email, username, setEmail, setUsername, setPassword, failedLogInMsg}) {
+		
 
-	// states to change
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+// state to change diplay of landingpage
 
-
-	let token = {
-		name: username,
-		email: email,
-		password_hash: password,
-	};
-
-	let loginToken = {
-		email: email,
-		password_hash: password,
-	};
-
-	const handleSubmit = () => {
-		fetch('http://127.0.0.1:9292/signup', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(token),
-		});
-	};
-
-	function handleLogIn() {
-		fetch('http://127.0.0.1:9292/signin', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(loginToken),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-			});
-	}
 
 	const [signup, setSignup] = useState(false);
 
@@ -104,7 +65,7 @@ function Login({show, showing}) {
 							onClick={(e) => {
 								e.preventDefault();
 								showing();
-								handleSubmit();
+								handleSignUp();
 							}}
 							className="formButton"
 						>
@@ -125,6 +86,7 @@ function Login({show, showing}) {
 				    <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a> */}
 						</div>
 						<span className="formSpan">or use your account</span>
+						<span className={`formSpan ${failedLogInMsg}`}>wrong password or email</span>
 						<input
 							className="loginInput"
 							type="email"
