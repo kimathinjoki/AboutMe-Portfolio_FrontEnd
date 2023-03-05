@@ -3,12 +3,11 @@ import ProjectItem from '../portfolio/Projectitem';
 import PortfolioItem from '../portfolio/PortfolioItem';
 import UserItem from '../users/UserItem';
 import Navbar from '../navbar/Navbar';
-import LandingPage from '../landingPage/LandingPage';
 import Login from '../login/Login';
-
-
 import './home.css';
 import Form from '../form/Form';
+
+
 
 function Home() {
 
@@ -45,7 +44,6 @@ function Home() {
 			<Login show={show} showing={showing}/>
 			<div className={homeShow}>
 			<div className="home">
-			
 			<div className="home-container">
 				<Navbar />
 				<div className="content-container">
@@ -54,8 +52,8 @@ function Home() {
 					</div>
 					<div className="cont content-container-right">
 						{/* <UserItem /> */}
-						{projects.map((value)=> <ProjectItem title={value.title} description={value.description} key={value.id} id={value.id} deleteProject={deleteProject} />)}
-						<div className="form">
+						<ProjectItem />
+						{/* <div className="form">
 							<form action>
 								<div className="form-section">
 									<input type="text" placeholder="title" />
@@ -65,7 +63,7 @@ function Home() {
 								</div>
 								<button>Add Project</button>
 							</form>
-						</div>
+						</div> */}
 					</div>
 
 					{/* <div className="r-container">
@@ -85,12 +83,12 @@ function Home() {
 									deleteProject={deleteProject}
 								/>
 							))}
-
 						</div>
 					</div> */}
 				</div>
 			</div>
 		</div>
+			
 		</div>
 	</div>
 	);
