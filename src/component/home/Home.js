@@ -37,7 +37,7 @@ function Home() {
 					<div className="cont content-container-right">
 						{/* <UserItem /> */}
 						<ProjectItem />
-						<div className="form">
+						{/* <div className="form">
 							<form action>
 								<div className="form-section">
 									<input type="text" placeholder="title" />
@@ -47,7 +47,7 @@ function Home() {
 								</div>
 								<button>Add Project</button>
 							</form>
-						</div>
+						</div> */}
 					</div>
 
 					{/* <div className="r-container">

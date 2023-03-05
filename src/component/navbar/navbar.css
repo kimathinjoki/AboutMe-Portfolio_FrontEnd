@@ -6,12 +6,12 @@ nav {
 	right: 0;
 	left: 0;
 	width: 319px;
-	display: table;
+	display: flex;
 	margin: 0 auto;
 	transform: translateY(-50%);
 }
 
-nav a {
+nav a, nav button {
 	position: relative;
 	width: 33.333%;
 	display: table-cell;
