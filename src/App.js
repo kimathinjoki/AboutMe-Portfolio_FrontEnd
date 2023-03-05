@@ -1,5 +1,5 @@
 import './App.css';
-import LandingPage from './component/landingPage/LandingPage';
+// import LandingPage from './component/landingPage/LandingPage';
 import Home from './component/home/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NotFound from './component/404page/NotFound';
@@ -7,12 +7,18 @@ import Form from './component/form/Form';
 
 function App() {
 	return (
+		<div>
+			<div className="logo-div">
+				<h1 className="logo">
+					ME<span>+</span>
+				</h1>
+			</div>
 		<Router>
 			<Switch>
-				<Route exact path="/">
+				{/* <Route exact path="/">
 					<LandingPage />
-				</Route>
-				<Route path="/home">
+				</Route> */}
+				<Route path="/">
 					<Home />
 				</Route>
 				<Route path="/add">
@@ -23,6 +29,7 @@ function App() {
 				</Route>
 			</Switch>
 		</Router>
+		</div>
 	);
 }
 

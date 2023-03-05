@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import './Login';
 import './login.css';
 
-function Login() {
+function Login({show, showing}) {
 	// state to change diplay of landingpage
-	const [show, setShow] = useState('Show');
+	
 
 	// states to change
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	function showing() {
-		setShow('noShow');
-	}
 
 	let token = {
 		name: username,
@@ -27,7 +24,7 @@ function Login() {
 	};
 
 	const handleSubmit = () => {
-		fetch('http://127.0.0.1:9292/auth/register', {
+		fetch('http://127.0.0.1:9292/signup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -37,7 +34,7 @@ function Login() {
 	};
 
 	function handleLogIn() {
-		fetch('http://127.0.0.1:9292/auth/login', {
+		fetch('http://127.0.0.1:9292/signin', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -107,7 +104,7 @@ function Login() {
 							onClick={(e) => {
 								e.preventDefault();
 								showing();
-								handleLogIn();
+								handleSubmit();
 							}}
 							className="formButton"
 						>

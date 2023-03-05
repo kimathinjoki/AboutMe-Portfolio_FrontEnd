@@ -6,11 +6,7 @@ import './landing_page.css';
 function LandingPage() {
 	return (
 		<div>
-			<div className="logo-div">
-				<h1 className="logo">
-					ME<span>+</span>
-				</h1>
-			</div>
+
 
 			<div>
 				{/* <p className="login"><span id="loginIcon"><AiOutlineLogin/></span></p> */}
