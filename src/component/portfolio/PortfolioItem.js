@@ -30,19 +30,14 @@ function PortfolioItem({name, email, id}) {
 	// gets the skills of a user
 useEffect(()=>{
 
-	fetch(`http://127.0.0.1:9292/skills/${id}`, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		}
-		})
+	fetch("http://127.0.0.1:9292/skills")
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
 			setSkills(data)
 		})
 
-},[id])
+},[])
 	
 
 
