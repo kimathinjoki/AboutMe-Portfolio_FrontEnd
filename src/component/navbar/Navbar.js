@@ -12,15 +12,12 @@ function Navbar() {
 	return (
 		<div id="navbarDivs">
 			<nav id="navbar">
-				<Link className="navbar" to="/home">
+				<Link className="navbar" to="/">
 					HOME
 				</Link>
 				<Link className="navbar" to="/projects">
 					PROJECTS
 				</Link>
-				{/* <Link className="navbar add-project" onClick={handleShow} to="#">
-					ADD+
-				</Link> */}
 				{/* <a href="#"><Link className='navbar' to="/add"><AiOutlineUserAdd/></Link></a> */}
 				<Form/>
 				
