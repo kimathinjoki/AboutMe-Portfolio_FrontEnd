@@ -142,6 +142,7 @@ function Login({show, showing, handleLogIn, handleSignUp, password, email, usern
 								className="ghost formButton"
 								id="signUp"
 								onClick={switchLogin}
+	
 							>
 								Sign Up
 							</button>
