@@ -5,6 +5,7 @@ import './navbar.css';
 // import { BiLogOutCircle } from 'react-icons/bi';
 import Form from '../form/Form';
 
+
 function Navbar() {
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
@@ -12,7 +13,7 @@ function Navbar() {
 	return (
 		<div id="navbarDivs">
 			<nav id="navbar">
-				<Link className="navbar" to="/">
+				<Link className="navbar" to="/home">
 					HOME
 				</Link>
 				<Link className="navbar" to="/projects">
@@ -20,6 +21,11 @@ function Navbar() {
 				</Link>
 				{/* <a href="#"><Link className='navbar' to="/add"><AiOutlineUserAdd/></Link></a> */}
 				<Form/>
+				
+
+				{/* <Link className="navbar" to="/projects">
+					PROJECTS
+				</Link> */}
 				
 				<div id="indicator"></div>
 			</nav>

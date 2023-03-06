@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import './Login';
 import './login.css';
+import { Link } from 'react-router-dom';
 
-function Login({show, showing, handleLogIn, handleSignUp, password, email, username, setEmail, setUsername, setPassword, failedLogInMsg}) {
+function Login({allow, handleLogIn, handleSignUp, password, email, username, setEmail, setUsername, setPassword}) {
 		
 
+	const [show, setShow] = useState();
+
+	const [failedLogInMsg, setFailedLogInMsg] =  useState("noMsg")
+
+	function showing() {
+		if (allow === "SUCCESS"){
+			setShow(<Link className="formButton" to="/home"></Link>);
+			// setHomeShow('homeShow')
+		}else{
+			// setShow('Show');
+            // setHomeShow('noShowHome')
+			setFailedLogInMsg("msg")
+		}
+	}
+
+
 // state to change diplay of landingpage
-
-
 	const [signup, setSignup] = useState(false);
 
 	const switchLogin = () => {
@@ -15,7 +30,7 @@ function Login({show, showing, handleLogIn, handleSignUp, password, email, usern
 	};
 
 	return (
-		<div className={show}>
+		<div className="">
 			<div
 				className={`loginRegister container ${
 					signup ? 'right-panel-active' : ''
@@ -64,12 +79,13 @@ function Login({show, showing, handleLogIn, handleSignUp, password, email, usern
 						<button
 							onClick={(e) => {
 								e.preventDefault();
-								showing();
 								handleSignUp();
+								showing();
 							}}
 							className="formButton"
 						>
-							Sign Up
+							{show}<span>sign up</span>
+						
 						</button>
 					</form>
 				</div>
@@ -114,11 +130,12 @@ function Login({show, showing, handleLogIn, handleSignUp, password, email, usern
 							className="formButton"
 							onClick={(e) => {
 								e.preventDefault();
-								showing();
 								handleLogIn();
+								showing();
+								
 							}}
 						>
-							Sign In
+							{show}<span >sign in</span>
 						</button>
 					</form>
 				</div>

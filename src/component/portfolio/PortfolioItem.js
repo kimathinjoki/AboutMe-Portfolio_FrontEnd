@@ -1,13 +1,16 @@
 import React from 'react';
 import avi from '../../avi.png'
 import './portfolioitem.css'
+import { useState, useEffect} from 'react';
 
-function PortfolioItem({name, email, skills, id}) {
+function PortfolioItem({name, email, id}) {
+
+	const [skills, setSkills] = useState([]);
 	
-	const [skillName, setSkillName] = React.useState('');
+	const [skillName, setSkillName] = useState('');
 
 	function addSkill(){
-		fetch('http://127.0.0.1:9292/skills/create',{
+		fetch(`http://127.0.0.1:9292/skill/create/${id}`,{
 			method: 'POST',
             headers: {
 				'Content-Type': 'application/json'
@@ -18,8 +21,29 @@ function PortfolioItem({name, email, skills, id}) {
 		}),
 	})
 	.then(res => res.json())
-	
+	.then((data) =>{
+		setSkills(skills, data.name)
+	})
+
 	}
+
+	// gets the skills of a user
+useEffect(()=>{
+
+	fetch(`http://127.0.0.1:9292/skills/${id}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		}
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			setSkills(data)
+		})
+
+},[id])
+	
 
 
 	return (
