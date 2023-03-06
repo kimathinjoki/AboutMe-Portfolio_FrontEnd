@@ -8,14 +8,13 @@ function LandingPage() {
 		<div>
 
 
-			<div>
-				{/* <p className="login"><span id="loginIcon"><AiOutlineLogin/></span></p> */}
-				<p className="login">
-					{/* <span id="loginIcon"><AiOutlineUserAdd /></span> */}
-				</p>
-			</div>
 
-			<Login />
+			
+
+
+
+
+
 		</div>
 	);
 }
