@@ -4,6 +4,9 @@ import PortfolioItem from '../portfolio/PortfolioItem';
 import UserItem from '../users/UserItem';
 import Navbar from '../navbar/Navbar';
 import Login from '../login/Login';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+
 import './home.css';
 import Form from '../form/Form';
 import {BiLogOutCircle} from "react-icons/bi"
@@ -14,7 +17,7 @@ function Home() {
 
 	const [projects, setProjects] = useState([]);
 
-	
+
 	const [show, setShow] = useState('Show');
 	const [homeShow, setHomeShow] = useState("noShowHome")
 
@@ -31,6 +34,9 @@ function Home() {
 
 	const [allow, setAllow] = useState("")
 	const [failedLogInMsg, setFailedLogInMsg] =  useState("noMsg")
+
+	// sets a users skills
+	const [skills, setSkills] = useState([])
 	
 	
 		let token = {
@@ -43,6 +49,39 @@ function Home() {
 			email: email,
 			password_hash: password,
 		};
+
+		// gets the skills of a user
+		// function gotSkills(dt){
+		// 	fetch(`http://127.0.0.1:9292/skills/${dt}`, {
+		// 		method: 'GET',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		}
+		// 		})
+		// 		.then((res) => res.json())
+		// 		.then((data) => {
+		// 			console.log(data);
+		// 			setSkills(data)
+		// 		})
+
+		// }
+
+
+		// gets the projects of a user
+
+		// function gotProjects(dt){
+		// 	fetch(`http://127.0.0.1:9292/projects/${dt}`, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         }
+        //         })
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             console.log(data);
+        //             setProjects(data)
+        //         })
+		// }
 	
 		const handleSignUp = () => {
 			fetch('http://127.0.0.1:9292/signup', {
@@ -57,8 +96,11 @@ function Home() {
                 console.log(data);
 				setAllow(data.message)
 				setLogedUserId(data.id)
-            });
+			})
+
 		};
+
+
 	
 		function handleLogIn() {
 			fetch('http://127.0.0.1:9292/signin', {
@@ -73,8 +115,46 @@ function Home() {
 					console.log(data);
 					setAllow(data.message)
 					setLogedUserId(data.id)
+					console.log(logedUserId)
+					setUsername(data.name)
+
+					// gotSkills(data.id)
+					// gotProjects(data.id)
+
+
 				});
+				// setEmail('')
+				// setPassword('')
+
+	
+
+
+				
+			
+				
+			
 		}
+
+
+
+		// fetching a user skills
+		
+		
+		// useEffect(()=>{
+
+		// 	fetch(`http://127.0.0.1:9292/skills/${logedUserId}`, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //     })
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             console.log(data);
+        //             setSkills(data)
+        //         },[showing()]);
+
+		// })
 
 
 	function showing() {
@@ -82,8 +162,8 @@ function Home() {
 			setShow('noShow');
 			setHomeShow('homeShow')
 		}else{
-			setShow('Show');
-            setHomeShow('noShowHome')
+			// setShow('Show');
+            // setHomeShow('noShowHome')
 			setFailedLogInMsg("msg")
 		}
 	}
@@ -116,43 +196,28 @@ function Home() {
 				<Navbar />
 				<div className="content-container">
 					<div className="cont content-container-left">
-						<PortfolioItem />
+						<PortfolioItem skills={skills} name={username} email={email} id={logedUserId}/>
 					</div>
 					<div className="cont content-container-right">
 						{/* <UserItem /> */}
-						<ProjectItem />
-						{/* <div className="form">
-							<form action>
-								<div className="form-section">
-									<input type="text" placeholder="title" />
-								</div>
-								<div className="form-section">
-									<textarea type="text" placeholder="description" />
-								</div>
-								<button>Add Project</button>
-							</form>
-						</div> */}
+						{/* {projects.map((value)=><ProjectItem title={value.title} description={value.description} id={value.id} deleteProject={deleteProject} />)} */}
+
+						<Router>
+							<Switch>
+			
+								<Route path="/home">
+									{/* <Home /> */}
+								</Route>
+								<Route path="/projects">
+									{projects.map((value)=><ProjectItem title={value.title} description={value.description} id={value.id} deleteProject={deleteProject} />)}
+								</Route>
+							</Switch>
+						</Router>
+
+			
 					</div>
 
-					{/* <div className="r-container">
-						<div className="r-left">
-							<p className="r-title">Bio</p>
-						</div>
-					</div> */}
-					{/* <div className="r2-container">
-						<div className="r-right"></div>
-						<div className="flex-container">
-							{projects.map((value) => (
-								<ProjectItem
-									title={value.title}
-									description={value.description}
-									key={value.id}
-									id={value.id}
-									deleteProject={deleteProject}
-								/>
-							))}
-						</div>
-					</div> */}
+					
 				</div>
 			</div>
 		</div>
