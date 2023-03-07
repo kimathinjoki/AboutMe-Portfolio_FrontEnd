@@ -13,26 +13,21 @@ function App(){
 	const [projects, setProjects] = useState([]);
 
 
-	// const [show, setShow] = useState('Show');
-	// const [homeShow, setHomeShow] = useState("noShowHome")
-
-
 	// states to change
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	// sets the id 
-	const [logedUserId, setLogedUserId] =useState(0)
+	const [id, setId] =useState(0)
 
 	// sets if the login is succesfull or not
 
 	const [allow, setAllow] = useState("")
-	const [failedLogInMsg, setFailedLogInMsg] =  useState("noMsg")
-
-	// sets a users skills
-	const [skills, setSkills] = useState([])
 	
+	
+
+
 	
 		let token = {
 			name: username,
@@ -51,7 +46,7 @@ function App(){
 
 
 	function handleLogIn(){
-		fetch('http://127.0.0.1:9292/signin', {
+		fetch('https://backendportfolio-9ejn.onrender.com/signin', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -62,9 +57,10 @@ function App(){
 			.then((data) => {
 				console.log(data);
 				setAllow(data.message)
-				setLogedUserId(data.id)
-				console.log(logedUserId)
+				setId(data.id)
 				setUsername(data.name)
+				console.log(id)
+				
 
 				// gotProjects(data.id)
 
@@ -73,7 +69,7 @@ function App(){
 	}
 
 	const handleSignUp = () => {
-		fetch('http://127.0.0.1:9292/signup', {
+		fetch('https://backendportfolio-9ejn.onrender.com/signup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -84,7 +80,8 @@ function App(){
 		.then((data) => {
 			console.log(data);
 			setAllow(data.message)
-			setLogedUserId(data.id)
+			setId(data.id)
+			console.log(id)
 
 		})
 
@@ -93,7 +90,7 @@ function App(){
 
 
 	useEffect(() => {
-		fetch('http://127.0.0.1:9292/projects')
+		fetch('https://backendportfolio-9ejn.onrender.com/projects')
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -101,13 +98,7 @@ function App(){
 			});
 	}, []);
 
-	function deleteProject(id) {
-		fetch(`http://127.0.0.1:9292//projects/destroy/${id}`, {
-			method: 'DELETE',
-		}).then(() => {
-			setProjects((prof) => prof.filter((it) => it.id !== id));
-		});
-	}
+
 
 
 
@@ -123,13 +114,13 @@ function App(){
 		<Router>
 			<Switch>
 				<Route exact path="/">
-					<LandingPage handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} failedLogInMsg={failedLogInMsg}  allow={allow} />
+					<LandingPage handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} failedLogInMsg={failedLogInMsg}  allow={allow} setFailedLogInMsg={setFailedLogInMsg} />
 				</Route>
 				<Route path="/home">
-					<Home skills={skills} username={username} email={email} deleteProject={deleteProject} loggedUserId={logedUserId} projects={projects}/>
+					<Home username={username} email={email} id={id} projects={projects} />
 				</Route>
 				<Route path="/add">
-					<Form />
+					<Form setProjects={setProjects} projects={projects} id={id} />
 				</Route>
 				<Route path="*">
 					<NotFound />

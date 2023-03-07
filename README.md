@@ -4,8 +4,6 @@
 
 This ia a web app wherre a user can register and create their profile, manage it and share it.
 
-
-
 ## Pre-Requisites
 In order to use this repository you will need the following:
 

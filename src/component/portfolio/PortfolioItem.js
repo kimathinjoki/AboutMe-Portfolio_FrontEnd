@@ -9,8 +9,21 @@ function PortfolioItem({name, email, id}) {
 	
 	const [skillName, setSkillName] = useState('');
 
+
+		// gets the skills of a user
+	useEffect(()=>{
+
+		fetch(`https://backendportfolio-9ejn.onrender.com/skills/${id}`)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setSkills(data)
+			})
+
+	},[])
+
 	function addSkill(){
-		fetch(`http://127.0.0.1:9292/skill/create/${id}`,{
+		fetch(`https://backendportfolio-9ejn.onrender.com/skill/create/${id}`,{
 			method: 'POST',
             headers: {
 				'Content-Type': 'application/json'
@@ -22,22 +35,12 @@ function PortfolioItem({name, email, id}) {
 	})
 	.then(res => res.json())
 	.then((data) =>{
-		setSkills(skills, data.name)
+		setSkills(...skills, data)
 	})
 
 	}
 
-	// gets the skills of a user
-useEffect(()=>{
 
-	fetch("http://127.0.0.1:9292/skills")
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-			setSkills(data)
-		})
-
-},[])
 	
 
 

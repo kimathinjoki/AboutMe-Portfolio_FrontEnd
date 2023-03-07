@@ -13,7 +13,7 @@ import {BiLogOutCircle} from "react-icons/bi"
 
 
 
-function Home({ username, email, logedUserId, projects, deleteProject}) {
+function Home({ username, email, id, projects, setProjects}) {
 
 	// const [projects, setProjects] = useState([]);
 
@@ -158,6 +158,15 @@ function Home({ username, email, logedUserId, projects, deleteProject}) {
 	// }
 
 
+	function deleteProject(id) {
+		fetch(`https://backendportfolio-9ejn.onrender.com/projects/destroy/${id}`, {
+			method: 'DELETE',
+		}).then(() => {
+			setProjects((prof) => prof.filter((it) => it.id !== id));
+		});
+	}
+
+
 	return (
 		<div>
 			{/* <Login show={show} showing={showing} handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} failedLogInMsg={failedLogInMsg}/> */}
@@ -168,7 +177,7 @@ function Home({ username, email, logedUserId, projects, deleteProject}) {
 				<Navbar />
 				<div className="content-container">
 					<div className="cont content-container-left">
-						<PortfolioItem name={username} email={email} id={logedUserId}/>
+						<PortfolioItem name={username} email={email} id={id} />
 					</div>
 					<div className="cont content-container-right">
 						{/* <UserItem /> */}

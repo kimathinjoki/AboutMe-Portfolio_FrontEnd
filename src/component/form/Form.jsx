@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
 
-function Form() {
+function Form({setProjects, projects, id}) {
 	const [show, setShow] = useState(false);
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
@@ -14,7 +14,8 @@ function Form() {
 
 	const projectBody = {
 		"title": title,
-        "description": description
+        "description": description,
+		"user_id": id
 	}
 
 	function addProject(){
@@ -26,7 +27,11 @@ function Form() {
             body: JSON.stringify(projectBody)
 		})
 		.then(res => res.json())
-		.then(data => console.log(data))
+		.then(data => {
+			console.log(data)
+			setProjects(...projects,data)
+		})
+		
 	}
 
 
