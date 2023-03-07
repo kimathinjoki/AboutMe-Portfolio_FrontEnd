@@ -19,7 +19,7 @@ function App(){
 	const [password, setPassword] = useState('');
 
 	// sets the id 
-	const [id, setId] =useState(0)
+	const [id, setId] =useState(4)
 
 	// sets if the login is succesfull or not
 
@@ -59,7 +59,10 @@ function App(){
 				setAllow(data.message)
 				setId(data.id)
 				setUsername(data.name)
-				console.log(id)
+				console.log(data.message)
+	
+				console.log(data.name)
+				console.log(data.id)
 				
 
 				// gotProjects(data.id)
@@ -79,8 +82,10 @@ function App(){
 		.then(res => res.json())
 		.then((data) => {
 			console.log(data);
+			console.log(data.data.id)
 			setAllow(data.message)
-			setId(data.id)
+			setId(data.data.id)
+			console.log(data.message)
 			console.log(id)
 
 		})
@@ -114,7 +119,7 @@ function App(){
 		<Router>
 			<Switch>
 				<Route exact path="/">
-					<LandingPage handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} failedLogInMsg={failedLogInMsg}  allow={allow} setFailedLogInMsg={setFailedLogInMsg} />
+					<LandingPage handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} allow={allow}  />
 				</Route>
 				<Route path="/home">
 					<Home username={username} email={email} id={id} projects={projects} />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login';
 import './login.css';
 import { Link } from 'react-router-dom';
+import {AiOutlineArrowRight} from "react-icons/ai"
 
 function Login({allow, handleLogIn, handleSignUp, password, email, username, setEmail, setUsername, setPassword}) {
 		
@@ -13,8 +14,9 @@ function Login({allow, handleLogIn, handleSignUp, password, email, username, set
 
 	function showing() {
 		if (allow === "SUCCESS"){
-			setShow(<Link className="formButton" to="/home"></Link>);
+			// setShow(<Link className="formButton" to="/home"><AiOutlineArrowRight/></Link>);
 			// setHomeShow('homeShow')
+			window.location.href ='/home'
 		}else{
 			// setShow('Show');
             // setHomeShow('noShowHome')
@@ -42,7 +44,11 @@ function Login({allow, handleLogIn, handleSignUp, password, email, username, set
 					<form
 						className="loginForm"
 						action="#"
-						onSubmit={(e) => e.preventDefault()}
+						onSubmit={(e) => {
+							e.preventDefault()
+							// handleSignUp();
+							// showing();
+						}}
 					>
 						<h1 className="headerh1">Create Account</h1>
 						<div className="social-container"></div>
@@ -78,14 +84,17 @@ function Login({allow, handleLogIn, handleSignUp, password, email, username, set
 							placeholder="Password"
 						/>
 						<button
+						// type="submit"
 							onClick={(e) => {
 								e.preventDefault();
-								handleSignUp();
+							handleSignUp();
+
 								showing();
+
 							}}
 							className="formButton"
 						>
-							{show}<span>sign up</span>
+							sign up
 						
 						</button>
 					</form>
@@ -94,7 +103,12 @@ function Login({allow, handleLogIn, handleSignUp, password, email, username, set
 					<form
 						className="loginForm"
 						action="#"
-						onSubmit={(e) => e.preventDefault()}
+						onSubmit={(e) => {
+							e.preventDefault()
+							// handleLogIn();
+							// showing()
+							
+						}}
 					>
 						<h1 className="headerh1">Sign in</h1>
 						<div className="social-container">
@@ -128,15 +142,16 @@ function Login({allow, handleLogIn, handleSignUp, password, email, username, set
 							Forgot your password?
 						</a>
 						<button
+						// type="submit"
 							className="formButton"
 							onClick={(e) => {
 								e.preventDefault();
-								handleLogIn();
 								showing();
-								
+								handleLogIn();
+							
 							}}
 						>
-							{show}<span >sign in</span>
+							sign in
 						</button>
 					</form>
 				</div>
