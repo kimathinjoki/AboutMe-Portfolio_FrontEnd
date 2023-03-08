@@ -5,6 +5,8 @@ import UserItem from '../users/UserItem';
 import Navbar from '../navbar/Navbar';
 import Login from '../login/Login';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Projects from '../portfolio/Projects';
+
 
 
 import './home.css';
@@ -13,7 +15,7 @@ import {BiLogOutCircle} from "react-icons/bi"
 
 
 
-function Home({ username, email, id, projects, setProjects}) {
+function Home({id, projects, setProjects}) {
 
 	// const [projects, setProjects] = useState([]);
 
@@ -177,26 +179,19 @@ function Home({ username, email, id, projects, setProjects}) {
 				<Navbar />
 				<div className="content-container">
 					<div className="cont content-container-left">
-						<PortfolioItem name={username} email={email} id={id} />
+						<PortfolioItem id={id} />
 					</div>
 					<div className="cont content-container-right">
-						{/* <UserItem /> */}
-						{projects.map((value)=><ProjectItem title={value.title} description={value.description} id={value.id} deleteProject={deleteProject} />)}
-
-						{/* <Router>
-							<Switch>
-			
-								<Route path="/home">
-									<Home />
-								</Route>
-								<Route path="/projects">
-									{projects.map((value)=><ProjectItem title={value.title} description={value.description} id={value.id} deleteProject={deleteProject} />)}
-								</Route>
-							</Switch>
-						</Router> */}
+						
+						{projects.map((value)=><ProjectItem title={value.title} description={value.description} id={value.id} deleteProject={deleteProject} status={value.status}/>)}
 
 			
-					</div>
+					 </div> 
+
+
+					{/* <Route path="/prrojects">
+					<Projects  deleteProject={deleteProject} projects={projects}/>
+					</Route>  */}
 
 					
 				</div>

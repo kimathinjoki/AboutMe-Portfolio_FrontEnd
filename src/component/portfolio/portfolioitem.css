@@ -8,6 +8,7 @@
 
 .portfolio-item p {
 	font-family: 'Shantell Sans', cursive;
+	/* text-align: center; */
 }
 .name {
 	padding: 0.5rem 0;

@@ -57,12 +57,12 @@ function App(){
 			.then((data) => {
 				console.log(data);
 				setAllow(data.message)
-				setId(data.id)
-				setUsername(data.name)
+				setId(data.data.id)
+				setUsername(data.data.name)
 				console.log(data.message)
-	
-				console.log(data.name)
-				console.log(data.id)
+				console.log(data.data.name)
+				console.log(data.data.email)
+				console.log(data.data.id)
 				
 
 				// gotProjects(data.id)
@@ -122,7 +122,10 @@ function App(){
 					<LandingPage handleLogIn={handleLogIn} handleSignUp={handleSignUp} username={username} email={email} password={password} setPassword={setPassword} setEmail={setEmail} setUsername={setUsername} allow={allow}  />
 				</Route>
 				<Route path="/home">
-					<Home username={username} email={email} id={id} projects={projects} />
+					<Home id={id} projects={projects} />
+				</Route>
+				<Route path="/projects">
+					<Home id={id} projects={projects} />
 				</Route>
 				<Route path="/add">
 					<Form setProjects={setProjects} projects={projects} id={id} />
